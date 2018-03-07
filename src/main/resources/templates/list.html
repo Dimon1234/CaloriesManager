@@ -5,14 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-
-<div >
+<button>Add</button>
+<!--Форма добавления -->
+<div>
+</div>
+<!-- Таблица meals -->
+<div>
     <table id="myTableId" >
         <thead>
         <tr>
             <th>Date Time</th>
             <th>Description</th>
             <th>Calories</th>
+            <th>edit</th>
+            <th>delete</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +26,8 @@
             <td th:text="${meal.getDateTime()}">1</td>
             <td th:text="${meal.getDescription()}">1</td>
             <td th:text="${meal.getCalories()}">1</td>
+            <td><a href="list.html" th:href="@{edit(id=${meal.getId()})}">edit</a></td>
+            <td><a href="list.html" th:href="@{delete(id=${meal.getId()})}">delete</a></td>
         </tr>
         </tbody>
     </table>
