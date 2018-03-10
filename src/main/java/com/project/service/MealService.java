@@ -31,9 +31,8 @@ public class MealService {
         LOG.debug("meal with id " + id + " deleted successfully");
     }
 
-    public void edit(Meal meal) {
-        repository.save(meal);
-        LOG.debug("meal "+meal+" edited successfully");
+    public Meal findOne(long id) {
+        return repository.findOne(id);
     }
 
     public List<Meal> getAll() {

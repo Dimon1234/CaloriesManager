@@ -1,5 +1,7 @@
 package com.project.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
 public class Meal {
@@ -15,6 +18,7 @@ public class Meal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateTime;
 
     private String description;
@@ -57,6 +61,10 @@ public class Meal {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.dateTime = LocalDateTime.parse(date.toString());
     }
 
     public void setDateTime(LocalDateTime dateTime) {
