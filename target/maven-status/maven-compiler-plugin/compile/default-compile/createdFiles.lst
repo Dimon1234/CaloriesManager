@@ -1,0 +1,13 @@
+com\project\model\Meal.class
+com\project\util\DateTimeUtil.class
+com\project\repository\UserRepository.class
+com\project\model\MealWithExceed.class
+com\project\util\MealsUtil.class
+com\project\service\InitService.class
+com\project\service\MealService.class
+com\project\model\Role.class
+com\project\controller\MealsController.class
+com\project\model\User.class
+com\project\SpringBootWebApplication.class
+com\project\LoggedUser.class
+com\project\repository\MealRepository.class

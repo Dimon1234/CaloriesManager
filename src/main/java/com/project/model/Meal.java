@@ -2,10 +2,7 @@ package com.project.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -13,6 +10,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "meal")
 public class Meal {
 
     @Id
@@ -26,6 +24,9 @@ public class Meal {
 
     private int calories;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Meal(LocalDateTime dateTime, String description, int calories) {
         this.dateTime = dateTime;
@@ -78,6 +79,14 @@ public class Meal {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

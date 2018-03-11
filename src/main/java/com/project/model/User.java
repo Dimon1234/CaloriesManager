@@ -2,11 +2,13 @@ package com.project.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 import static com.project.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
-
+@Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +24,11 @@ public class User {
 
     private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
 
+    @ElementCollection(targetClass = Role.class)
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Meal> meals;
 
     public User() {
     }
@@ -90,5 +96,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(List<Meal> meals) {
+        this.meals = meals;
     }
 }

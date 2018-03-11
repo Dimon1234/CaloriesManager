@@ -8,7 +8,7 @@
 </head>
 <body>
 <!--Форма добавления -->
-<div class="container col-sm-5" >
+<div class="container col-sm-3" >
 <form action="#" th:action="@{/save}" th:object="${newMeal}" method="post">
     <div class="form-group">
     <input type="hidden" th:field="*{id}"/>
@@ -27,7 +27,7 @@
 </form>
 </div>
 <!-- Таблица meals -->
-<div class="container col-md-10">
+<div class="container col-md-8">
     <table id="myTableId" class="table">
         <thead class="">
         <tr>
