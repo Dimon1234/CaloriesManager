@@ -24,7 +24,7 @@ public class DefaultController {
 
     @GetMapping("/")
     public ModelAndView home(ModelAndView model) {
-        model.addObject("meals", mealService.getAll());
+        model.addObject("meals", mealService.getAllWithExceed());
         model.addObject("newMeal", new Meal());
         model.setViewName("list");
         return model;
@@ -33,7 +33,7 @@ public class DefaultController {
     @GetMapping("/delete")
     public String delete(ModelAndView model, @RequestParam long id) {
         mealService.deleteMeal(id);
-        model.addObject("meals", mealService.getAll());
+        model.addObject("meals", mealService.getAllWithExceed());
         model.setViewName("list");
         return "redirect:/";
     }
@@ -47,7 +47,7 @@ public class DefaultController {
     @GetMapping("/edit")
     public ModelAndView editMeal(ModelAndView model, @RequestParam long id) {
         model.addObject("newMeal", mealService.findOne(id));
-        model.addObject("meals", mealService.getAll());
+        model.addObject("meals", mealService.getAllWithExceed());
         model.setViewName("list");
         return model;
     }

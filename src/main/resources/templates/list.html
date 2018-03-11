@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet"/>
 </head>
 <body>
-<button>Add</button>
 <!--Форма добавления -->
+<div class="container col-sm-5" >
 <form action="#" th:action="@{/save}" th:object="${newMeal}" method="post">
+    <div class="form-group">
     <input type="hidden" th:field="*{id}"/>
-    <p>Date: <input type="datetime-local" th:field="*{dateTime}"  title="Date"/></p>
-    <p>Description: <input type="text" th:value="Завтрак" th:field="*{description}" title="description" /></p>
-    <p>Calories: <input type="number" th:value="1000" th:field="*{calories}" title="calories"/></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <label for="dateInput">Date/Time</label>
+        <input type="datetime-local" id="dateInput" class="form-control" th:field="*{dateTime}"/>
+    </div>
+    <div class="form-group">
+        <label for="descInput">Description</label>
+        <input type="text" id="descInput" class="form-control" th:field="*{description}"/>
+    </div>
+    <div class="form-group">
+        <label for="caloriesInput">Calories</label>
+        <input type="number" id="caloriesInput" class="form-control" th:field="*{calories}"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<div>
 </div>
 <!-- Таблица meals -->
-<div>
-    <table id="myTableId" >
-        <thead>
+<div class="container col-md-10">
+    <table id="myTableId" class="table">
+        <thead class="">
         <tr>
             <th>Date Time</th>
             <th>Description</th>
@@ -29,12 +39,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="meal : ${meals}">
+        <tr th:each="meal : ${meals}" th:class="${meal.isExceed()}? 'bg-danger':'bg-success'">
             <td th:text="${meal.getDateTime()}">1</td>
             <td th:text="${meal.getDescription()}">1</td>
             <td th:text="${meal.getCalories()}">1</td>
-            <td><a href="list.html" th:href="@{edit(id=${meal.getId()})}">edit</a></td>
-            <td><a href="list.html" th:href="@{delete(id=${meal.getId()})}">delete</a></td>
+            <td><a href="list.html" class="btn btn-warning" th:href="@{edit(id=${meal.getId()})}">edit</a></td>
+            <td><a href="list.html" class="btn btn-danger" th:href="@{delete(id=${meal.getId()})}">delete</a></td>
         </tr>
         </tbody>
     </table>

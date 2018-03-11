@@ -2,7 +2,9 @@ package com.project.service;
 
 
 import com.project.model.Meal;
+import com.project.model.MealWithExceed;
 import com.project.repository.MealRepository;
+import com.project.util.MealsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,11 @@ public class MealService {
     public List<Meal> getAll() {
         LOG.debug("select all meals from database");
         return repository.findAll();
+    }
+
+    public List<MealWithExceed> getAllWithExceed()
+    {
+        return MealsUtil.getWithExceeded(getAll(), MealsUtil.DEFAULT_CALORIES_PER_DAY);
     }
 
 
