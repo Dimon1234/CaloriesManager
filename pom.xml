@@ -22,6 +22,11 @@
 
     <dependencies>
 
+        <!--String boot actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
         <!--H2 db-driver -->
         <dependency>
@@ -40,7 +45,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
 
 
         <!-- hot swapping, disable cache for template, enable live reload -->

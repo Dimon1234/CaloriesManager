@@ -9,9 +9,9 @@
 <!--Форма добавления -->
 <form action="#" th:action="@{/save}" th:object="${newMeal}" method="post">
     <input type="hidden" th:field="*{id}"/>
-    <p>Date: <input type="datetime-local" th:field="*{dateTime}" /></p>
-    <p>Description: <input type="text" th:value="Завтрак" th:field="*{description}" /></p>
-    <p>Calories: <input type="number" th:value="1000" th:field="*{calories}" /></p>
+    <p>Date: <input type="datetime-local" th:field="*{dateTime}"  title="Date"/></p>
+    <p>Description: <input type="text" th:value="Завтрак" th:field="*{description}" title="description" /></p>
+    <p>Calories: <input type="number" th:value="1000" th:field="*{calories}" title="calories"/></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <div>

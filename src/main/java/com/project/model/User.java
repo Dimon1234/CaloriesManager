@@ -1,9 +1,11 @@
 package com.project.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.util.Set;
+
+import static com.project.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+
 
 public class User {
     @Id
@@ -18,7 +20,7 @@ public class User {
 
     private boolean isEnabled;
 
-    private int caloriesPerDay;
+    private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
 
     private Set<Role> roles;
 

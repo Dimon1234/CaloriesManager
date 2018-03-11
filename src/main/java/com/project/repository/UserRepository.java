@@ -1,5 +1,5 @@
 package com.project.repository;
 
 
-public interface UserRepository {
+public interface UserRepository{
 }
