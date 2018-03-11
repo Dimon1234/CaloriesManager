@@ -39,17 +39,16 @@ public class MealService {
         return repository.findOne(id);
     }
 
-    @Cacheable("meals")
-    public List<Meal> getAll() {
+
+    private List<Meal> getAll() {
         LOG.debug("select all meals from database");
         return repository.findAll();
     }
 
+    @Cacheable("meals")
     public List<MealWithExceed> getAllWithExceed()
     {
         return MealsUtil.getWithExceeded(getAll(), MealsUtil.DEFAULT_CALORIES_PER_DAY);
     }
-
-
 
 }
