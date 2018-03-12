@@ -2,6 +2,7 @@ package com.project.model;
 
 
 import javax.persistence.*;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import static com.project.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends AbstractNamedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,7 +23,7 @@ public class User {
 
     private boolean isEnabled;
 
-    private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
+    private int caloriesPerDay;
 
     @ElementCollection(targetClass = Role.class)
     private Set<Role> roles;
@@ -30,20 +31,21 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Meal> meals;
 
-    public User() {
+    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+        this(id, name, email, password, DEFAULT_CALORIES_PER_DAY, true, EnumSet.of(role, roles));
     }
 
-    public User(String name, String email, String password, boolean isEnabled, int caloriesPerDay, Set<Role> roles) {
-        this.name = name;
+    public User(Integer id, String name, String email, String password, int caloriesPerDay, boolean enabled, Set<Role> roles) {
+        super(id, name);
         this.email = email;
         this.password = password;
-        this.isEnabled = isEnabled;
         this.caloriesPerDay = caloriesPerDay;
+        this.isEnabled = enabled;
         this.roles = roles;
     }
 
-    public Long getId() {
-        return id;
+    public User(Integer id, String name) {
+        super(id, name);
     }
 
     public void setId(Long id) {
