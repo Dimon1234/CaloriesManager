@@ -17,10 +17,14 @@ import java.util.List;
 @Service
 public class MealService {
 
-    @Autowired
-    private MealRepository repository;
+    private final MealRepository repository;
 
     private Logger LOG = LoggerFactory.getLogger(MealService.class);
+
+    @Autowired
+    public MealService(MealRepository repository) {
+        this.repository = repository;
+    }
 
     @CacheEvict(value = "meals", allEntries = true)
     public void saveMeal(Meal meal) {

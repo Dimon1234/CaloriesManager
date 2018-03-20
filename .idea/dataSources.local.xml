@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="default" uuid="b54fe358-89f3-49be-9b75-3f6dd34ff3a6">
+    <data-source name="default" uuid="84798760-cbbb-4059-9ff1-ed2d5b1cd2d0">
       <database-info product="H2" version="1.4.196 (2017-06-10)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.4.196 (2017-06-10)">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -9,8 +9,6 @@
       <secret-storage>master_key</secret-storage>
       <auth-required>false</auth-required>
       <introspection-schemas>DEFAULT:PUBLIC</introspection-schemas>
-      <resolve-scope>DEFAULT:public</resolve-scope>
-      <unqualified-resolve-schemas>DEFAULT:public</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>

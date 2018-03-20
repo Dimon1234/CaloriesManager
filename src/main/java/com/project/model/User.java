@@ -13,7 +13,7 @@ import static com.project.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 public class User extends AbstractNamedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -48,7 +48,7 @@ public class User extends AbstractNamedEntity {
         super(id, name);
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
