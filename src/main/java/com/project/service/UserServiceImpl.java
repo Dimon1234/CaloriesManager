@@ -5,8 +5,6 @@ import com.project.model.User;
 import com.project.repository.UserRepository;
 import com.project.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.List;
 import static com.project.util.ValidationUtil.checkNotFound;
 import static com.project.util.ValidationUtil.checkNotFoundWithId;
 
+//TODO Add caching
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;

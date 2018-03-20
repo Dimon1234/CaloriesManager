@@ -1,7 +1,7 @@
 package com.project.controller;
 
 import com.project.model.User;
-import com.project.service.MealService;
+import com.project.service.MealServiceImpl;
 import com.project.service.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public abstract class AbstractUserController {
     @Autowired
     private final UserServiceImpl service;
 
-    private Logger log = LoggerFactory.getLogger(MealService.class);
+    private Logger log = LoggerFactory.getLogger(MealServiceImpl.class);
 
     protected AbstractUserController(UserServiceImpl service) {
         this.service = service;

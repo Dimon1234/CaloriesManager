@@ -1,58 +1,22 @@
 package com.project.service;
 
-
 import com.project.model.Meal;
 import com.project.model.MealWithExceed;
-import com.project.repository.MealRepository;
-import com.project.util.MealsUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
+import com.project.util.exception.NotFoundException;
 
 import java.util.List;
 
-@Service
-public class MealService {
+public interface MealService {
 
-    private final MealRepository repository;
+    Meal create(Meal meal);
 
-    private Logger LOG = LoggerFactory.getLogger(MealService.class);
+    void delete(long id) throws NotFoundException;
 
-    @Autowired
-    public MealService(MealRepository repository) {
-        this.repository = repository;
-    }
+    Meal get(long id) throws NotFoundException;
 
-    @CacheEvict(value = "meals", allEntries = true)
-    public void saveMeal(Meal meal) {
-        repository.save(meal);
-        LOG.debug("meal " + meal + " saved successfully");
-    }
+    void update(Meal meal);
 
-    @CacheEvict(value = "meals", allEntries = true)
-    public void deleteMeal(long id) {
-        repository.delete(id);
-        LOG.debug("meal with id " + id + " deleted successfully");
-    }
+    List<Meal> getAll();
 
-    public Meal findOne(long id) {
-        LOG.debug("select from database one meal with id " + id);
-        return repository.findOne(id);
-    }
-
-
-    private List<Meal> getAll() {
-        LOG.debug("select all meals from database");
-        return repository.findAll();
-    }
-
-    @Cacheable("meals")
-    public List<MealWithExceed> getAllWithExceed()
-    {
-        return MealsUtil.getWithExceeded(getAll(), MealsUtil.DEFAULT_CALORIES_PER_DAY);
-    }
-
+    List<MealWithExceed> getAllWithExceed();
 }
