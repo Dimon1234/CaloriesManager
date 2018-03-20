@@ -32,7 +32,7 @@ public class MealsController {
 
     @GetMapping("/delete")
     public String delete(ModelAndView model, @RequestParam long id) {
-        mealServiceImpl.deleteMeal(id);
+        mealServiceImpl.delete(id);
         model.addObject("meals", mealServiceImpl.getAllWithExceed());
         model.setViewName("meals");
         return "redirect:/";
@@ -40,13 +40,13 @@ public class MealsController {
 
     @PostMapping("/save")
     public String saveMeal(@ModelAttribute("newMeal") Meal meal) {
-        mealServiceImpl.saveMeal(meal);
+        mealServiceImpl.create(meal);
         return "redirect:/";
     }
 
     @GetMapping("/edit")
     public ModelAndView editMeal(ModelAndView model, @RequestParam long id) {
-        model.addObject("newMeal", mealServiceImpl.findOne(id));
+        model.addObject("newMeal", mealServiceImpl.get(id));
         model.addObject("meals", mealServiceImpl.getAllWithExceed());
         model.setViewName("meals");
         return model;
